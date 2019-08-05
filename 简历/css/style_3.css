@@ -1,0 +1,11 @@
+body,
+h1,
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: RGB(102, 102, 102);
+    color: white;
+}
