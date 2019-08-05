@@ -6,6 +6,16 @@ h2 {
 }
 
 .header {
+    font-size: 20px;
     background-color: RGB(102, 102, 102);
     color: white;
+    padding: 20px;
+}
+
+div h2{
+    float: left;
+    font-size: 15px;
+    background-color: RGB(204, 204, 204);
+    width: 100px;
+    height: 100px;
 }
