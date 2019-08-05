@@ -1,0 +1,32 @@
+body,
+h1,
+h2{
+    margin: 0;
+    padding: 0;
+}
+
+div .label {
+    font-weight: bold;
+}
+
+.tab {
+    margin-right: 2em;
+}
+
+.height {
+    margin-bottom: 10px;
+}
+
+h2 {
+    padding: 20px 0;
+}
+
+.header {
+    background-color: RGB(63, 142, 249);
+    color: white;
+    float: left;
+    height: 1000px;
+    margin: 0 20px 0 0;
+    padding: 80px 75px;
+}
+
