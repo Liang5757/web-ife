@@ -9,3 +9,8 @@ div .label {
 .height {
     margin-bottom: 10px;
 }
+
+div > div span:nth-child(2) {
+    display: block;
+    line-height: 25px;
+}

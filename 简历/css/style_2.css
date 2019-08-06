@@ -30,3 +30,8 @@ h2 {
     padding: 80px 75px;
 }
 
+div > div span:nth-child(2) {
+    display: block;
+    line-height: 25px;
+}
+

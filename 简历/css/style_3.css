@@ -5,6 +5,14 @@ h2 {
     padding: 0;
 }
 
+div .label {
+    font-weight: bold;
+}
+
+.tab {
+    margin-right: 2em;
+}
+
 .header {
     font-size: 20px;
     background-color: RGB(102, 102, 102);
@@ -12,10 +20,34 @@ h2 {
     padding: 20px;
 }
 
+/*解决高度塌陷*/
+body > div:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+body > div {
+    border-bottom: 1px solid #cccccc;
+}
+
 div h2{
     float: left;
     font-size: 15px;
     background-color: RGB(204, 204, 204);
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 20px;
+    border-bottom: 1px solid white;
+    padding: 50px 30px;
 }
+
+
+div > span,
+div > a {
+    position: relative;
+    top: 15px;
+    left: 15px;
+    line-height: 25px;
+}
+
+
