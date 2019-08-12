@@ -1,0 +1,55 @@
+<!DOCTYPE html><!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+<body>
+<input id="first-number" type="number" value="0" placeholder="第一个数字">
+<input id="second-number" type="number" value="0" placeholder="第二个数字">
+<button id="add-btn">加</button>
+<button id="minus-btn">减</button>
+<button id="times-btn">乘</button>
+<button id="divide-btn">除</button>
+<p id="result">运算结果</p>
+<script>
+    document.getElementById("add-btn").onclick = function() {
+        var num1 = document.getElementById("first-number").value;
+        var num2 = document.getElementById("second-number").value;
+
+        if (isNaN(+num1) || isNaN(+num2)) {
+            document.getElementById("result").innerText = "输入出错";
+        }
+        else {
+            document.getElementById("result").innerText = "运算结果" + (+num1 + +num2);
+        }
+    };
+
+    document.getElementById("minus-btn").onclick = function() {
+        var num1 = document.getElementById("first-number").value;
+        var num2 = document.getElementById("second-number").value;
+
+        document.getElementById("result").innerText = "运算结果" + (+num1 - +num2);
+    };
+
+    document.getElementById("times-btn").onclick = function() {
+        var num1 = document.getElementById("first-number").value;
+        var num2 = document.getElementById("second-number").value;
+
+        document.getElementById("result").innerText = "运算结果" + (+num1 * +num2);
+    };
+
+    document.getElementById("divide-btn").onclick = function() {
+        var num1 = document.getElementById("first-number").value;
+        var num2 = document.getElementById("second-number").value;
+
+        if (isNaN(+num1) || isNaN(+num2) || +num2 == 0) {
+            document.getElementById("result").innerText = "输入出错";
+        }
+        else {
+            document.getElementById("result").innerText = "运算结果" + (+num1 + +num2);
+        }
+    };
+</script>
+</body>
+</html>
