@@ -1,56 +1,45 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>李明的简历</title>
-    <link rel="stylesheet" href="css/style_3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
-<h1 class="header">简历</h1>
-<div class="basic-info">
-    <h2>基本信息</h2>
-    <span class="label">姓名 </span><span class="tab">张三</span>
-    <span class="label">性别 </span><span class="tab">男</span>
-    <span class="label">应聘职位 </span><span class="tab">Web前端工程师</span>
-</div>
-<div class="contact">
-    <h2>联系方式</h2>
-    <span class="label">手机 </span><span class="tab">12312341234</span>
-    <span class="label">Email </span><a class="tab" href="#">joinefe@baidu.com</a>
-    <span class="label">个人主页 </span><a class="tab" href="#">Github</a>
-</div>
-<div class="ability-description">
-    <h2>能力描述</h2>
-    <div>
-        <span class="label">技术能力 </span>
-        <span class="height">熟练掌握Html，Css,Javascript</span>
-    </div>
-    <div>
-        <span class="label">综合能力  </span>
-        <span >良好的沟通，主动积极，努力勤奋</span>
-    </div>
-</div>
-<div class="education-experience">
-    <h2>教育经历</h2>
-    <div>
-        <span class="label">本科 </span>
-        <span class="height">百度前端技术学院小薇学院</span>
-    </div>
-    <div>
-        <span class="label">研究生  </span>
-        <span>百度前端技术学院大斌学院</span>
-    </div>
-</div>
-<div class="basic-info">
-    <h2>项目经验</h2>
-    <div>
-        <span class="label">小度小度 </span>
-        <span class="height">作为前端工程师角色参与了ABC组件的开发</span>
-    </div>
-    <div>
-        <span class="label">SAN Doc </span>
-        <span>作为文档工程师参与了SAN Doc编写</span>
-    </div>
-</div>
+<table id="list"></table>
+<script>
+    var num1 = 9;
+    var num2 = 9;
+    var list = document.getElementById('list');
+    sum(num1,num2);
+    function   sum(m,n){
+        for(var i =1;i<=m;i++){
+            var newL = document.createElement('tr');
+            list.appendChild(newL);
+            for(var j = i;j<=n;j++)
+            {
+                var x = i * j;
+                var newEl = document.createElement('td');
+                var newText = document.createTextNode(i+'*'+j+'='+x);
+                newEl.appendChild(newText);
+                newL.appendChild(newEl);
+            }
+        }
+    }
+</script>
+<script>
+    function select(){
+        for(var i=1;i<=100;i++ ){
+            if(i%3==0){
+                console.log('PA');
+            }
+            else{
+                console.log(i);
+            }
+        }
+    }
+    select();
+</script>
 </body>
 </html>
