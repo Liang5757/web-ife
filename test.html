@@ -1,45 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>控制元素的显示及隐藏</title>
+    <style>
+        select {
+            display: none;
+        }
+        .select{
+            display: block;
+        }
+        .non-select{
+            display: none;
+        }
+    </style>
 </head>
 <body>
-<table id="list"></table>
+<label>
+    <input id="school" name="status" type="radio" onclick="choseSch()">
+    School
+</label>
+<label>
+    <input id="company" name="status" type="radio" onclick="choseCompany()">
+    Company
+</label>
+
+<select id="school-select" >
+    <option>北京邮电大学</option>
+    <option>黑龙江大学</option>
+    <option>华中科技大学</option>
+</select>
+
+<select id="company-select" >
+    <option>百度</option>
+    <option>爱奇艺</option>
+</select>
 <script>
-    var num1 = 9;
-    var num2 = 9;
-    var list = document.getElementById('list');
-    sum(num1,num2);
-    function   sum(m,n){
-        for(var i =1;i<=m;i++){
-            var newL = document.createElement('tr');
-            list.appendChild(newL);
-            for(var j = i;j<=n;j++)
-            {
-                var x = i * j;
-                var newEl = document.createElement('td');
-                var newText = document.createTextNode(i+'*'+j+'='+x);
-                newEl.appendChild(newText);
-                newL.appendChild(newEl);
-            }
-        }
+    function choseSch(){
+        x=document.getElementById("school-select");
+        x.className="select";
+        y.className="non-select";
     }
-</script>
-<script>
-    function select(){
-        for(var i=1;i<=100;i++ ){
-            if(i%3==0){
-                console.log('PA');
-            }
-            else{
-                console.log(i);
-            }
-        }
+    function choseCompany(){
+        y=document.getElementById("company-select");
+        y.className="select";
+        x.className="non-select";
     }
-    select();
 </script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:480px;
+            height: 480px;
+            background: url("smile.jpg");
+        }
+    </style>
+</head>
+<body>
+    <div id="ani"></div>
+    <script>
+        const pic = document.getElementById('ani');
+        let Y = 480;
+        let flag = true;
+
+        function gif() {
+            pic.style.backgroundPositionY = '-' + Y + 'px';
+            if (flag) {
+                Y += 480;
+            }
+            else {
+                Y -= 480;
+            }
+            if(Y >= 7680 || Y <= 0){
+                flag = !flag;
+            }
+        }
+        setInterval(gif, 100);
+    </script>
+</body>
+</html>

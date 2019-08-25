@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <input id="name" type="text">
+        <button id="submit-btn">Submit</button>
+        <script>
+            let btn = document.getElementById('submit-btn');
+            var inputText = document.getElementById('name');
+
+            document.onkeydown = function(e) {
+                e = e || window.event;
+                const key = e.keyCode || e.which || e.charCode;
+
+                if (key === 13) {
+                    console.log(inputText.value);
+                }
+
+                if (key === 27) {
+                    inputText.value = "";
+                    inputText.focus();
+                }
+            };
+
+            btn.onclick = function () {
+                console.log(inputText.value);
+            }
+        </script>
+    </body>
+</html>
