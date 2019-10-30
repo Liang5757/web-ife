@@ -1,0 +1,22 @@
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.form-group {
+    height: 60px;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+
+.form-control {
+    border: 1px solid #dcdfe6;
+    border-radius: 5px;
+    padding: 8px 0 8px 1em;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+#active-name {
+    width: 80%;
+}

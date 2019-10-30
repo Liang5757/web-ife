@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <select id="year-select">
+    </select>
+
+    <select id="month-select">
+    </select>
+
+    <select id="day-select">
+    </select>
+
+    <select id="hour-select">
+    </select>
+
+    <select id="minute-select">
+    </select>
+
+    <select id="second-select">
+    </select>
+
+    <p id="result-wrapper"></p>
+    <script>
+        const year = document.getElementById("year-select");
+        const month = document.getElementById("month-select");
+        const day = document.getElementById("day-select");
+        const hour = document.getElementById("hour-select");
+        const minute = document.getElementById("minute-select");
+        const second = document.getElementById("second-select");
+        const p = document.getElementById("result-wrapper");
+
+        let dayNum = 31;
+        //记录定时器的id
+        let interValid = 0;
+
+        //初始化下拉框
+        for (let i = 2000; i < 2032; i++) {
+            year.options.add(new Option(i, i));
+        }
+
+        for (let i = 1; i < 13; i++) {
+            month.options.add(new Option(i, i));
+        }
+
+        for (let i = 1; i < 32; i++) {
+            day.options.add(new Option(i, i));
+        }
+
+        for (let i = 0; i < 24; i++) {
+            hour.options.add(new Option(i, i));
+        }
+
+        for (let i = 0; i < 60; i++) {
+            minute.options.add(new Option(i, i));
+        }
+
+        for (let i = 0; i < 60; i++) {
+            second.options.add(new Option(i, i));
+        }
+
+
+        showTime();
+
+        //绑定日期改变
+        year.addEventListener('change', function () {
+            let dayNum = getDayNum(year.value, month.value);
+            changeDay(dayNum);
+            showTime();
+        });
+
+        month.addEventListener('change', function () {
+            let dayNum = getDayNum(year.value, month.value);
+            changeDay(dayNum);
+            showTime();
+        });
+
+        //根据月份及年份获得天数
+        function getDayNum(year, mouth) {
+            switch (mouth) {
+                case "1":
+                case "3":
+                case "5":
+                case "7":
+                case "8":
+                case "10":
+                case "12":
+                    dayNum = 31;
+                    break;
+                case "4":
+                case "6":
+                case "9":
+                case "11":
+                    dayNum = 30;
+                    break;
+                case "2":
+                    if (isLeapYear(year)) {
+                        dayNum = 29;
+                    }
+                    else {
+                        dayNum = 28;
+                    }
+                    break;
+            }
+            return dayNum;
+        }
+
+        //判断是否为闰年
+        function isLeapYear(year) {
+            return (year % 4 === 0 && year % 100 !== 0) || year % 400;
+        }
+
+        //根据获得的天数修改下拉框
+        function changeDay(dayNum) {
+            day.options.length = 0;
+            for (let i = 1; i <= dayNum; i++) {
+                day.options.add(new Option(i, i));
+            }
+        }
+
+        //更新result-wrapper下的文字
+        function showTime() {
+            clearInterval(interValid);
+            let chooseTime = new Date(year.value, month.value - 1, day.value, hour.value, minute.value, second.value);
+            let timeString = getTime(chooseTime);
+
+            interValid = setInterval(function () {
+                let currentTime = new Date();
+                let timeCp = timeComparison(chooseTime, currentTime);
+                let timeGap = getTimeGap(chooseTime, currentTime);
+
+                p.innerText = timeString + timeCp + timeGap;
+            })
+        }
+
+        //获得选择时间
+        function getTime(time) {
+            let week = getWeek(time.getDay(), "CN");
+            let allDate = formatDate(year.value, Number(month.value), day.value, "CN");
+            let allTime = formatTime(hour.value, minute.value, second.value, ":");
+
+            return "现在距离" + allDate + week + " " + allTime;
+        }
+
+        //比较时间前后
+        function timeComparison(chooseTime, currentTime) {
+            if (currentTime.getTime() - chooseTime.getTime() > 0) {
+                return " 已经过去";
+            }
+            else {
+                return " 还有";
+            }
+        }
+        
+        //获得时间差距
+        function getTimeGap(chooseTime, currentTime) {
+            let gap = Math.abs(chooseTime - currentTime);
+            let day = Math.floor(gap / (1000 * 60 * 60 * 24));
+            let hour = Math.floor((gap - day * (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minute = Math.floor((gap - day * (1000 * 60 * 60 * 24) - hour * (1000 * 60 * 60)) / (1000 * 60));
+            let second = Math.floor((gap - day * (1000 * 60 * 60 * 24) - hour * (1000 * 60 * 60) - minute * (1000 * 60)) / 1000);
+
+            return " " + day + " 天 " + hour + " 小时 " + minute + " 分 " + second + " 秒"
+        }
+
+        //来根据某个日期返回这一天是星期几
+        function getWeek(num, type) {
+            let week;
+            if (type === "CN") {
+                week = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            }
+            else {
+                week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            }
+
+            return week[num];
+        }
+
+        //时间前补零
+        function zeroize(num) {
+            return num >= 10 ? num : ("0" + num);
+        }
+
+        //格式化年月日
+        function formatDate(year, mouth, day, type) {
+            if (type === "CN") {
+                return zeroize(year) + "年" + zeroize(mouth) + "月" + zeroize(day) + "日";
+            }
+            else {
+                return zeroize(year) + "-" + zeroize(mouth) + "-" + zeroize(day);
+            }
+        }
+
+        //格式化时分秒
+        function formatTime(hour, minute, second, type) {
+            if (type === ":") {
+                return zeroize(hour) + ":" + zeroize(minute) + ":" + zeroize(second);
+            }
+            else {
+                if (hour > 12) {
+                    return zeroize(hour - 12) + ":" + zeroize(minute) + ":" + zeroize(second) + " PM";
+                }
+                else {
+                    return zeroize(hour) + ":" + zeroize(minute) + ":" + zeroize(second) + " AM";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

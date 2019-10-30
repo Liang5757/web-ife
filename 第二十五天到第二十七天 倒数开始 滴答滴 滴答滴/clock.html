@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <time></time>
+    <br>
+    <time></time>
+    <script>
+        const time1 = document.getElementsByTagName("time")[0];
+        const time2 = document.getElementsByTagName("time")[1];
+
+        setInterval(getClock, 1000);
+
+        //显示时钟
+        function getClock() {
+            const date = new Date();
+
+            let week1 = getWeek(date.getDay(), "CN");
+            let allDate1 = formatDate(date.getFullYear(), date.getMonth() + 1, date.getDate(), "CN");
+            let allTime1 = formatTime(date.getHours(), date.getMinutes(), date.getSeconds(), ":");
+
+            let week2 = getWeek(date.getDay(), "-");
+            let allDate2 = formatDate(date.getFullYear(), date.getMonth() + 1, date.getDate(), "-");
+            let allTime2 = formatTime(date.getHours(), date.getMinutes(), date.getSeconds(), "-");
+
+            time1.innerText = allDate1 + week1 + " " + allTime1;
+            time2.innerText = allDate2 + " " + week2 + " " + allTime2;
+        }
+
+        //来根据某个日期返回这一天是星期几
+        function getWeek(num, type) {
+            let week;
+            if (type === "CN") {
+                week = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            }
+            else {
+                week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            }
+
+            return week[num];
+        }
+
+        //时间前补零
+        function zeroize(num) {
+            return num >= 10 ? num : ("0" + num);
+        }
+
+        //格式化年月日
+        function formatDate(year, mouth, day, type) {
+            if (type === "CN") {
+                return zeroize(year) + "年" + zeroize(mouth) + "月" + zeroize(day) + "日";
+            }
+            else {
+                return zeroize(year) + "-" + zeroize(mouth) + "-" + zeroize(day);
+            }
+        }
+
+        //格式化时分秒
+        function formatTime(hour, minute, second, type) {
+            if (type === ":") {
+                return zeroize(hour) + ":" + zeroize(minute) + ":" + zeroize(second);
+            }
+            else {
+                if (hour > 12) {
+                    return zeroize(hour - 12) + ":" + zeroize(minute) + ":" + zeroize(second) + " PM";
+                }
+                else {
+                    return zeroize(hour) + ":" + zeroize(minute) + ":" + zeroize(second) + " AM";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

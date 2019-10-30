@@ -2,50 +2,36 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>控制元素的显示及隐藏</title>
-    <style>
-        select {
-            display: none;
+    <title></title>
+    <style type="text/less">
+        *{
+            margin: 0;
+            padding: 0;
         }
-        .select{
-            display: block;
-        }
-        .non-select{
-            display: none;
+        #wrap{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 1px solid;
+            margin: 0 auto;
+            #inner{
+                width: 100px;
+                height: 100px;
+                background: pink;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+            }
         }
     </style>
+    <script src="../less/less.min.js"></script>
 </head>
 <body>
-<label>
-    <input id="school" name="status" type="radio" onclick="choseSch()">
-    School
-</label>
-<label>
-    <input id="company" name="status" type="radio" onclick="choseCompany()">
-    Company
-</label>
-
-<select id="school-select" >
-    <option>北京邮电大学</option>
-    <option>黑龙江大学</option>
-    <option>华中科技大学</option>
-</select>
-
-<select id="company-select" >
-    <option>百度</option>
-    <option>爱奇艺</option>
-</select>
-<script>
-    function choseSch(){
-        x=document.getElementById("school-select");
-        x.className="select";
-        y.className="non-select";
-    }
-    function choseCompany(){
-        y=document.getElementById("company-select");
-        y.className="select";
-        x.className="non-select";
-    }
-</script>
+<div id="wrap">
+    <div id="inner"></div>
+</div>
 </body>
 </html>

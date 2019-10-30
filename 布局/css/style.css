@@ -1,137 +1,180 @@
-.header {
-    height: 80px;
-    width: 100%;
-    background-color: #333333;
-    overflow: hidden;
-}
-
-/* 清除浮动 */
-.clearfix:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-/* 清除浮动兼容IE6 */
+/*清除浮动*/
 .clearfix {
-    zoom: 1;
+  zoom: 1;
 }
-
-
-/* 设置图片样式 */
-.logo {
-    position: relative;
-    top: 20px;
-    left: 205px;
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
 }
-
-.pointer {
-    float: right;
-    margin-top: 10px;
-    margin-right: 155px;
-    letter-spacing: 10px;
+.header {
+  height: 50px;
+  width: 100%;
+  background-color: #333333;
+  overflow: hidden;
 }
-
-/* 设置header超链接 */
-.pointer a {
-    color: #fff;
-    font-size: 15px;
-    letter-spacing: 0;
+.header .pointer {
+  float: right;
+  margin-top: 10px;
+  margin-right: 155px;
+  letter-spacing: 10px;
 }
-
+.header .pointer a {
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 0;
+}
+.header .logo {
+  /* 设置图片样式 */
+  position: relative;
+  left: 10%;
+  top: 10%;
+}
 .banner {
-    width: 100%;
-    height: 300px;
-    background-color: #66bb33;
+  width: 100%;
+  height: 500px;
+  background-color: #66bb33;
+  position: relative;
 }
-
-.banner li {
-    color: #335e1a;
-    background-color: #b2dd99;
-    /* 设置文字居中 */
-    width: 30px;
-    line-height: 35px;
-    border: 1px solid black;
-    /* 布局 */
-    margin-right: 5px;
-    text-align: center;
-    float: left;
-    position: relative;
-    top: 250px;
-    left: 1100px;
+.banner .carousel {
+  height: 100%;
+  width: 900px;
+  margin: 0 auto;
+  background-color: #444;
+  position: relative;
+  overflow: hidden;
 }
-
-.banner .active {
-    background-color: #e0f1d6;
-    height: 35px;
-    padding-top: 25px;
-    margin-top: -26px;
+.banner .carousel .carousel-indicators {
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 15px;
+  transform: translateX(-50%);
+  z-index: 15;
 }
-
+.banner .carousel .carousel-indicators li {
+  color: #335e1a;
+  background-color: #b2dd99;
+  /* 设置文字居中 */
+  width: 30px;
+  line-height: 35px;
+  border: 1px solid black;
+  /* 布局 */
+  margin-right: 5px;
+  text-align: center;
+  float: left;
+  transition: height 5s ease;
+}
+.banner .carousel .carousel-indicators .index-active {
+  background-color: #e0f1d6;
+  height: 35px;
+  padding-top: 25px;
+  margin-top: -26px;
+}
+.banner .carousel .carousel-inner {
+  height: 100%;
+  position: absolute;
+  left: 0;
+}
+.banner .carousel .carousel-inner .item {
+  float: left;
+  height: 100%;
+}
+.banner .carousel .carousel-inner .item img {
+  height: 100%;
+  width: 100%;
+}
+.banner .carousel .btns {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  right: 760px;
+  width: 50px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.1);
+  transform: translateY(-50%);
+  text-align: center;
+  line-height: 60px;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: arial, serif;
+  font-weight: normal;
+  cursor: pointer;
+  z-index: 15;
+}
+.banner .carousel .next {
+  right: -50px;
+  border-radius: 7px 0 0 7px;
+  transition: right 0.1s ease;
+}
+.banner .carousel .pre {
+  left: -50px;
+  border-radius: 0 7px 7px 0;
+  transition: left 0.1s ease;
+}
+.banner .carousel:hover .next {
+  opacity: 1;
+  right: 0;
+}
+.banner .carousel:hover .pre {
+  opacity: 1;
+  left: 0;
+}
 .content {
-    margin-top: 20px;
+  margin-top: 20px;
 }
-
-.content .menu li {
-    background-color: #eeeeee;
-    width: 110px;
-    line-height: 48px;
-    text-align: center;
-    float: left;
-    position: relative;
-    /* 下移一像素挡住top下边框边框 */
-    top: 1px;
-    left: 205px;
-    border-top: 1px solid #dddddd;
-    border-left: 1px solid #dddddd;
-    border-top-left-radius: 1.2em;
-    border-top-right-radius: 1.2em;
+.content .top {
+  border-bottom: 1px solid #dddddd;
+  /* 为active设置下边框，则其余上移1px，top的下边框变成其余item的下边框 */
 }
-
-.top {
-    border-bottom: 1px solid #dddddd;
+.content .top .menu li {
+  background-color: #eeeeee;
+  width: 110px;
+  line-height: 48px;
+  text-align: center;
+  float: left;
+  position: relative;
+  /* 下移一像素挡住top下边框边框 */
+  top: 1px;
+  left: 205px;
+  border-top: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+  border-top-left-radius: 1.2em;
+  border-top-right-radius: 1.2em;
 }
-
-/* 为active设置下边框，则其余上移1px，top的下边框变成其余item的下边框 */
-.content #active {
-    background-color: white;
-    border-bottom: 1px solid white;
+.content .top #active {
+  background-color: white;
+  border-bottom: 1px solid white;
 }
-
-.main-content {
-    width: 1000px;
-    margin: 0 auto 20px;
+.content .main-content {
+  width: 1000px;
+  margin: 0 auto 20px;
 }
-
-.block1,
-.block2,
-.block3 {
-    display: flex;
+.content .main-content .block1,
+.content .main-content .block2,
+.content .main-content .block3 {
+  display: flex;
 }
-
-.block1 div,
-.block2 div,
-.block3 div{
-    padding: 80px;
-    border: 1px solid #dddddd;
-    margin: 12px 10px 0 0;
-    flex: 1;
-    text-align: center;
+.content .main-content .block1 div,
+.content .main-content .block2 div,
+.content .main-content .block3 div {
+  padding: 80px;
+  border: 1px solid #dddddd;
+  margin: 12px 10px 0 0;
+  flex: 1;
+  text-align: center;
 }
-
 .footer {
-    width: 100%;
-    height: 100px;
-    background-color: #666666;
-    padding-top: 15px;
+  width: 100%;
+  height: 100px;
+  background-color: #666666;
+  padding-top: 15px;
 }
-
 .footer div {
-    text-align: center;
+  text-align: center;
 }
-
 .footer a {
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
 }
