@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.active {
+  background-color: #ffb6c3;
+}
+.wrapper {
+  width: 202px;
+  height: 160px;
+}
+.wrapper input {
+  width: 184px;
+  height: 25px;
+  border: 1px solid #cecece;
+  padding: 5px 8px;
+}
+.wrapper ul {
+  color: #aaafa9;
+  border: 1px solid #cecece;
+  border-top: none;
+  display: none;
+}
+.wrapper ul li {
+  height: 25px;
+  font-size: 12px;
+  line-height: 25px;
+  padding-left: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.wrapper ul li:hover {
+  background-color: #b7deec;
+}
+/*# sourceMappingURL=style.css.map */
